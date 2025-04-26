@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- General Styles for PDF/Print Readability --- */
+        /* --- General Styles --- */
         body {
             font-family: 'Noto Naskh Arabic', Tahoma, Arial, sans-serif;
             background-color: #ffffff;
             color: #333333;
-            line-height: 1.8; /* Slightly more generous line height */
-            font-size: 16px;
+            line-height: 1.8;
+            font-size: 16px; /* Base size for larger screens */
             margin: 0;
             padding: 0;
             -webkit-font-smoothing: antialiased;
@@ -25,7 +25,7 @@
 
         /* --- Container --- */
         .container {
-            max-width: 850px; /* Slightly wider for more content */
+            max-width: 850px;
             margin: 30px auto;
             padding: 30px 40px;
             background-color: #ffffff;
@@ -38,33 +38,30 @@
         /* --- Headings --- */
         h1, h2, h3 {
              font-family: 'Noto Naskh Arabic', Tahoma, Arial, sans-serif;
-             font-weight: 700; /* Bold headings */
+             font-weight: 700;
              page-break-after: avoid;
              page-break-inside: avoid;
         }
-
         h1 {
             color: #d85a6c;
             text-align: center;
-            font-size: 1.8em; /* Adjusted size */
+            font-size: 1.8em;
             margin-bottom: 35px;
             border-bottom: 2px solid #f0c0c0;
             padding-bottom: 15px;
         }
-
         h2 {
             color: #e07080;
-            font-size: 1.5em; /* Adjusted size */
+            font-size: 1.5em;
             margin-top: 40px;
             margin-bottom: 25px;
             border-bottom: 1px dashed #f0c0c0;
             padding-bottom: 10px;
         }
-
         h3 {
-            color: #4a4a4a; /* Darker color for sub-headings */
-            font-size: 1.2em; /* Adjusted size */
-            font-weight: 700; /* Ensure bold */
+            color: #4a4a4a;
+            font-size: 1.2em;
+            font-weight: 700;
             margin-top: 30px;
             margin-bottom: 15px;
         }
@@ -75,21 +72,18 @@
             text-align: right;
             page-break-inside: avoid;
         }
-
         ul {
             list-style-type: none;
             padding-right: 25px;
             margin-bottom: 18px;
              page-break-inside: avoid;
         }
-
         li {
             margin-bottom: 12px;
             position: relative;
             text-align: right;
              page-break-inside: avoid;
         }
-
         li::before {
             content: '•';
             color: #e88d8d;
@@ -100,16 +94,8 @@
         }
 
         /* --- Specific Elements --- */
-        strong {
-            color: #c84a5c;
-            font-weight: 700;
-        }
-
-        em { /* For italics like scientific names */
-           font-style: italic;
-           color: #555; /* Slightly different color for emphasis */
-        }
-
+        strong { color: #c84a5c; font-weight: 700; }
+        em { font-style: italic; color: #555; }
         code {
             background-color: #f8f0f0;
             padding: 3px 6px;
@@ -117,52 +103,41 @@
             font-family: monospace;
             color: #b05060;
             font-size: 0.9em;
-            direction: ltr; /* Ensure code terms read left-to-right */
-            display: inline-block; /* Helps with directionality */
+            direction: ltr;
+            display: inline-block;
+            word-break: break-all; /* Allow long code terms to break if needed */
         }
-
-        a {
-            color: #d85a6c; /* Link color matching the main heading */
-            text-decoration: none; /* No underline by default */
-        }
-        a:hover {
-            text-decoration: underline; /* Underline on hover */
-        }
-
-        hr { /* Horizontal rule style */
-          border: 0;
-          height: 1px;
-          background-color: #e0e0e0;
-          margin: 40px 0;
-          page-break-after: always; /* Force page break after hr if needed for sections */
-        }
+        a { color: #d85a6c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        hr { border: 0; height: 1px; background-color: #e0e0e0; margin: 40px 0; page-break-after: always; }
 
         /* --- Table Styling --- */
+        .table-wrapper {
+             overflow-x: auto; /* Enable horizontal scrolling for the table on small screens */
+             margin-bottom: 25px; /* Add margin to the wrapper */
+             page-break-inside: avoid; /* Try to keep wrapper and table together */
+        }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            margin-bottom: 25px;
-            font-size: 0.95em; /* Slightly smaller table font */
-            page-break-inside: auto; /* Allow table to break if necessary */
+            /* removed bottom margin, applied to wrapper now */
+            font-size: 0.95em;
+            min-width: 500px; /* Force minimum width to necessitate scrolling if needed */
         }
         th, td {
-            border: 1px solid #e0e0e0; /* Light grey borders */
-            padding: 10px 12px; /* Cell padding */
+            border: 1px solid #e0e0e0;
+            padding: 10px 12px;
             text-align: right;
+            white-space: nowrap; /* Prevent text wrapping initially in cells */
         }
         th {
-            background-color: #fdf6f6; /* Very light pink header */
-            font-weight: 700; /* Bold header text */
-            color: #c84a5c; /* Darker pink header text */
+            background-color: #fdf6f6;
+            font-weight: 700;
+            color: #c84a5c;
         }
-        tbody tr:nth-child(even) {
-             background-color: #f9f9f9; /* Subtle striping for rows */
-        }
-        tbody tr {
-            page-break-inside: avoid; /* Try to keep rows together */
-        }
-
+        tbody tr:nth-child(even) { background-color: #f9f9f9; }
+        tbody tr { page-break-inside: avoid; }
 
         /* --- Footer/Note --- */
         .note {
@@ -172,15 +147,67 @@
             padding-top: 20px;
             border-top: 1px solid #dddddd;
             text-align: center;
-             page-break-inside: avoid;
+            page-break-inside: avoid;
         }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 768px) { /* Wider breakpoint for tablets and large phones */
+            body {
+                font-size: 15px; /* Slightly smaller base font */
+                line-height: 1.7; /* Adjust if needed */
+            }
+            .container {
+                margin: 15px; /* Reduce margin */
+                padding: 20px 15px; /* Reduce padding */
+                border-left: 4px solid #e88d8d; /* Thinner accent border */
+            }
+            h1 { font-size: 1.6em; margin-bottom: 25px; }
+            h2 { font-size: 1.3em; margin-top: 30px; margin-bottom: 20px; }
+            h3 { font-size: 1.1em; margin-top: 25px; margin-bottom: 12px; }
+            p { margin-bottom: 15px; }
+            ul { padding-right: 20px; } /* Adjust list padding */
+            li::before { right: -20px; } /* Adjust bullet position */
+
+            table {
+                font-size: 0.9em; /* Smaller font in table */
+                 min-width: 0; /* Allow table to shrink more before scrolling */
+                 white-space: normal; /* Allow text wrapping in cells on mobile */
+            }
+            th, td {
+                padding: 8px 10px; /* Reduce cell padding */
+                 white-space: normal; /* Allow text wrapping */
+            }
+            hr { margin: 30px 0; }
+            .note { margin-top: 30px; padding-top: 15px; }
+        }
+
+        @media (max-width: 480px) { /* Specific styles for smaller phone screens */
+             body {
+                font-size: 14px; /* Even smaller base font */
+             }
+             .container {
+                 margin: 10px;
+                 padding: 15px 10px;
+                 border-left: none; /* Remove accent border entirely */
+                 border-radius: 5px; /* Slightly less rounding */
+             }
+            h1 { font-size: 1.4em; margin-bottom: 20px; }
+            h2 { font-size: 1.2em; margin-top: 25px; margin-bottom: 15px; }
+            h3 { font-size: 1.05em; margin-top: 20px; margin-bottom: 10px; }
+             th, td {
+                 padding: 6px 8px; /* Further reduce cell padding */
+             }
+        }
+
 
         /* --- Print-Specific Styles --- */
         @media print {
+             /* (Keep the print styles from the previous version) */
             body {
                 font-size: 11pt;
                 background-color: #ffffff;
                 color: #000000;
+                font-family: 'Noto Naskh Arabic', Tahoma, Arial, sans-serif !important; /* Ensure font is used */
             }
             .container {
                 box-shadow: none;
@@ -190,20 +217,22 @@
                 border-radius: 0;
                 padding: 0;
             }
+             .table-wrapper { overflow: visible; } /* Don't scroll in print */
+             table { font-size: 10pt; }
+             th, td { white-space: normal !important; } /* Allow wrapping in print */
+
             h1, h2, h3, strong, li::before, th {
-                 color: #000000 !important; /* Black text for print */
+                 color: #000000 !important;
             }
-            h1, h2 { border-bottom-color: #cccccc !important; } /* Grey borders */
+            h1, h2 { border-bottom-color: #cccccc !important; }
             h1 { border-bottom-width: 1px !important; }
             h2 { border-bottom-style: solid !important;}
-            th, td { border-color: #cccccc !important; } /* Grey table borders */
-            th { background-color: #f0f0f0 !important; } /* Light grey table header */
-            tbody tr:nth-child(even) { background-color: #f9f9f9 !important; } /* Keep subtle striping */
+            th, td { border-color: #cccccc !important; }
+            th { background-color: #f0f0f0 !important; }
+            tbody tr:nth-child(even) { background-color: #f9f9f9 !important; }
 
             a { text-decoration: none; color: #000 !important; }
-            hr { display: none; } /* Often don't need forced page breaks/rules in print */
-
-            /* Hide elements not needed for print if any */
+            hr { display: none; }
         }
 
     </style>
@@ -257,32 +286,35 @@
          </p>
 
         <h3>جدول: مواقع محتملة لتكون بلورات الملح الوردي</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>الموقع</th>
-                    <th>النوع</th>
-                    <th>الملاحظات</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>ملاحات طينة (Thyna)</td>
-                    <td>صناعي/شبه صناعي</td>
-                    <td>إنتاج سنوي 300,000 طن، منطقة محمية ZICO</td>
-                </tr>
-                <tr>
-                    <td>سبخة النوال</td>
-                    <td>طبيعي</td>
-                    <td>توجد على طول الساحل قرب صفاقس</td>
-                 </tr>
-                 <tr>
-                    <td>سبخة بو جمل</td>
-                    <td>طبيعي</td>
-                    <td>منطقة طبيعية محتملة لتكون البلورات</td>
-                 </tr>
-             </tbody>
-         </table>
+        <!-- Added table wrapper div -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>الموقع</th>
+                        <th>النوع</th>
+                        <th>الملاحظات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ملاحات طينة (Thyna)</td>
+                        <td>صناعي/شبه صناعي</td>
+                        <td>إنتاج سنوي 300,000 طن، منطقة محمية ZICO</td>
+                    </tr>
+                    <tr>
+                        <td>سبخة النوال</td>
+                        <td>طبيعي</td>
+                        <td>توجد على طول الساحل قرب صفاقس</td>
+                     </tr>
+                     <tr>
+                        <td>سبخة بو جمل</td>
+                        <td>طبيعي</td>
+                        <td>منطقة طبيعية محتملة لتكون البلورات</td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div> <!-- End table wrapper -->
 
         <h3>الخلاصة</h3>
         <p>
